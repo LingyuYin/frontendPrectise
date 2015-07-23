@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div id="first_line">
+		<div class="block first"></div>
+		<div class="block second"></div>
+		<div class="block third"></div>
+	</div>
+	<div id="second_line">
+		<div class="block first"></div>
+		<div class="block second"></div>
+		<div class="block third"></div>
+	</div>
+	<div id="third_line">
+		<div class="block first"></div>
+		<div class="block second"></div>
+		<div class="block third"></div>
+	</div>
+	<div class = "menu">
+		<div class="menublock"></div>
+		<div class="menublock"></div>
+		<div class="menublock"></div>
+		<div class="menublock"></div>
+	</div>
+	<script type="text/javascript">
+		// window.onload = function() {
+		var left = 300;
+		var prime_width = document.body.clientWidth;
+		if (prime_width <= 900) {
+			left = 200;
+		};
+		if (prime_width <= 700) {
+			left = 100;
+		};
+		// }
+		window.onresize = function() {
+			var first_line = document.getElementById("first_line");
+			var second_line = document.getElementById("second_line");
+			var third_line = document.getElementById("third_line");
+			var width = document.body.clientWidth;
+			var change_width = prime_width - width;
+			if(change_width <= 100 && change_width > 0){
+				second_line.style.marginLeft = (left +100 - change_width) + "px";
+				third_line.style.marginLeft = (left +200 - change_width) + "px";
+			}
+			if (change_width <= 200 && change_width > 0) {
+				third_line.style.marginLeft = (left + 200 - change_width) + "px";
+			}
+			if (change_width > 200 && change_width <= left + 100){
+				first_line.style.marginLeft = (left+200 - change_width) + "px";
+				second_line.style.marginLeft = (left+200 - change_width) + "px";
+				third_line.style.marginLeft = (left+200 - change_width) + "px";
+			}
+		}
+	</script>
+</body>
+</html>

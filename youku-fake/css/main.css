@@ -1,0 +1,88 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#whole{
+	width: 1210px;
+	margin-left: 40px;
+	margin-top: 20px;
+	float: left;
+}
+.top{
+	margin: 10px;
+	float: left;
+}
+.tab_block{
+	float: left;
+	height: 20px;
+	width: 60px;
+	text-align: center;
+	font-size: 16px;
+	background: #aaa;
+	cursor: pointer;   /*变手*/
+}
+.picdiv{
+	margin-top: 10px;
+	clear: left;
+	float: left;
+	overflow: scroll;
+}
+.big{
+	width: 420px;
+	height: 260px;
+	margin-right: 10px; 
+	margin-left: 10px;
+	float: left;
+}
+.bigblock{
+	width: 420px;
+	height: 240px;
+	background: blue;
+}
+.block3{
+	clear: left;
+	float: left;
+}
+.small{
+	width: 200px;
+	height: 110px;
+	margin-right: 10px; 
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+.block{
+	width: 200px;
+	height: 110px;
+	background: green;
+}
+.blockh{
+	float: left;
+}
+.right{
+	width: 310px;
+	height: 370px;
+	margin-left: 10px;
+	background: green;
+	/*-webkit-transform: rotate(0deg);*/
+}
+@media (max-width: 1250px){
+	.hor{
+		float: left;
+	}
+	.unhor{
+		clear: left;
+		/*display: none;*/
+	}
+	.right{
+		margin-top: -390px;
+		height: 500px;
+	}
+}
+@media (max-width: 990px){
+	.middle{
+		display: none;
+	}
+	.three{
+		display: none;
+	}
+}

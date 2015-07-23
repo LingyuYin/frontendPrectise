@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="content-type" content="type=text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="dialog.css">
+</head>
+<body>
+	<button onclick="show();">Click</button>
+	<script type="text/javascript" src = "jsDialog.js"></script>
+	<script type="text/javascript">
+		function show(){
+			dialog('3', 'test', dialog1);
+		}
+		function dialog1(msg){
+			alert(msg);
+		}
+	</script>
+</body>
+</html>

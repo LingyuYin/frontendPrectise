@@ -1,0 +1,152 @@
+<!-- 此页面实现了youku的部分页面-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Redcross</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="whole">
+	<div class="top">
+		<ul style="list-style-type:none">
+			<li class="tab_block" onclick="page1display();">第一页</li>
+			<li class="tab_block" onclick="page2display();">第二页</li>
+		</ul>
+	</div>
+	<div class="picdiv" id="page1">
+		<div class="blockh">
+			<div class="big">
+				<div class="bigblock"></div>
+			</div>
+			<div class="blockh middle">
+				<div class="small">
+					<div class="block"></div>
+				</div>
+				<div class="small">
+					<div class="block"></div>
+				</div>
+			</div>
+			<div class="block3">
+				<div class="small blockh">
+					<div class="block"></div>
+				</div>
+				<div class="small blockh">
+					<div class="block"></div>
+				</div>
+				<div class="small blockh three">
+					<div class="block"></div>
+				</div>
+			</div>
+		</div>
+		<div class="blockh unhor">
+			<div class="small hor">
+				<div class="block"></div>
+			</div>
+			<div class="small hor">
+				<div class="block"></div>
+			</div>
+			<div class="small hor three">
+				<div class="block"></div>
+			</div>
+		</div>
+		<div class="blockh">
+			<div class="right"></div>
+		</div>
+	</div>
+	<div class="picdiv" id="page2" style="display:none;">
+		<div class="blockh">
+			<div class="big">
+				<div class="bigblock" style="background:black"></div>
+			</div>
+			<div class="blockh">
+				<div class="small">
+					<div class="block"></div>
+				</div>
+				<div class="small">
+					<div class="block"></div>
+				</div>
+			</div>
+			<div class="block3">
+				<div class="small blockh">
+					<div class="block"></div>
+				</div>
+				<div class="small blockh">
+					<div class="block"></div>
+				</div>
+				<div class="small blockh three">
+					<div class="block"></div>
+				</div>
+			</div>
+		</div>
+		<div class="blockh unhor">
+			<div class="small hor">
+				<div class="block"></div>
+			</div>
+			<div class="small hor">
+				<div class="block"></div>
+			</div>
+			<div class="small hor three">
+				<div class="block"></div>
+			</div>
+		</div>
+		<div class="blockh">
+			<div class="right"></div>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript">
+		var page1 = document.getElementById("page1");
+		var page2 = document.getElementById("page2");
+		var div = document.getElementById("whole");
+		var width = document.body.clientWidth;
+		if (width < 990) {
+			div.style.width = "760px";
+			var left = (width - 760) /2;
+			if (left > 0){
+				div.style.marginLeft = left + "px";
+			}
+		}
+		if (width < 1250){
+			div.style.width = "990px";
+			var left = (width - 990) /2;
+			if (left > 0){
+				div.style.marginLeft = left + "px";
+			}
+		}else{
+			var left = (width - 1210) / 2;
+			div.style.marginLeft = left + "px";
+		} 
+		window.onresize = function(){
+			var width = document.body.clientWidth;
+			if (width < 990) {
+				div.style.width = "760px";
+				var left = (width - 760) /2;
+				if (left > 0){
+					div.style.marginLeft = left + "px";
+				}
+			}
+			if (width < 1250){
+				div.style.width = "990px";
+				var left = (width - 990) /2;
+				if (left > 0){
+					div.style.marginLeft = left + "px";
+				}
+			}else{
+				div.style.width = "1210px";
+				var left = (width - 1210) / 2;
+				div.style.marginLeft = left + "px";
+			}
+		}
+		function page1display(){
+			page2.style.display = "none";
+			page1.style.display = "inherit";
+		}
+		function page2display(){
+			page1.style.display = "none";
+			page2.style.display = "inherit";
+		}
+	</script>
+</body>
+</html>

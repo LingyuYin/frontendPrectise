@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body id="body">
+	<div id = "firstpage">
+		<img id="logo" src="images/logo.png">
+		<img id="circle" src="images/circle.png">
+		<img id="line" src="images/line.png">
+		<div class="firstpagetext">
+			<span class="smalltextstyle">年轻人筹款首选平台</span>		
+		</div>
+		<div class="bottom">
+			<button class="download" onclick="#">iPhone版下载</button>
+			<img class="nextbutton" src="images/next.png" onclick="nextPage();">
+		</div>
+	</div>
+	<div id = "secondpage">
+		<div id="toptext">
+			<span class="bigtextstyle">快速发起筹款</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">一句话描述筹款目的，添加图片，语音描述<br/>即可快速的发起筹款，获得支持</span>
+		</div>
+		<img class="middleimage secondimage" src="images/pagetwoimage.png"> 
+		<div class="bottom">
+			<button class="download" onclick="#">iPhone版下载</button>
+			<img class="nextbutton" src="images/next.png" onclick="nextPage();">
+		</div>
+	</div>
+	<div id = "thirdpage">
+		<div id="toptext">
+			<span class="bigtextstyle">发现好玩的人和事</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">结交有趣的人，赞助打赏好玩儿的事，他们<br/>都在这等你</span>
+		</div>
+		<img class="middleimage thirdimage" src="images/pagethreeimage.png">
+		<div class="bottom">
+			<button class="download" onclick="#">iPhone版下载</button>
+			<a class="nexttext" onclick="nextPage();">联系我们</a>
+		</div>
+	</div>
+	<div id = "fourthpage">
+		<div id="fourthtext">
+			<span class="bigtextstyle">上海追梦网络有限公司</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem"><div style="width:auto;float:left">地址：</div><div style="width:auto;float:left">北京市朝阳区麦子店街53号D1号曼<br/>宁国际中心4层（来访请提前预约）</div><br/><br/>时间：10：00-19：00 <br/>电话：010-58422300、010-57458847 <br/>微博：@Dreamore</span>
+		</div>
+		<div class="fourthsmalltext">
+			<span class="smalltextstyle" style="color:#000000">客服微信</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">微信名：Dreamore<br/>微信号：qingsongchou</span>
+		</div>
+		<div class="fourthsmalltext">
+			<span class="smalltextstyle" style="color:#000000">合作项目</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">联系人：Ryan<br/>邮箱：liuzac@dreamore.com</span>
+		</div>
+		<div class="fourthsmalltext">
+			<span class="smalltextstyle" style="color:#000000">市场合作</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">联系人：Nemo<br/>邮箱：nemo@dreamore.com</span>
+		</div>
+		<div class="fourthsmalltext">
+			<span class="smalltextstyle" style="color:#000000">媒体联络</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">联系人：Celia<br/>邮箱： water@dreamore.com</span>
+		</div>
+		<div class="fourthsmalltext">
+			<span class="smalltextstyle" style="color:#000000">市场联络</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem; margin-bottom:0.4rem">联系人：Andrew<br/>邮箱： hr@dreamore.com</span>
+		</div>
+	</div>
+	<script type="text/javascript" src="zepto.js"></script>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript">
+		(function(){
+			var el = document.documentElement;
+			var width = document.body.clientWidth;
+			var height = window.screen.height;
+			var fontsize = width/320 * 100;
+			el.style.fontSize = fontsize + "px";
+			var page1 = document.getElementById("firstpage");
+			var page2 = document.getElementById("secondpage");
+			var page3 = document.getElementById("thirdpage");
+			var page4 = document.getElementById("fourthpage");
+			page1.style.height = height + "px";
+			page2.style.height = height + "px";
+			page3.style.height = height + "px";
+			page4.style.height = height + "px";
+		})()
+	</script>
+	<script type="text/javascript">
+		var order = 1;
+		var lock = 0;
+		var prepage = '';
+		var thispage = '#firstpage';
+		var nextpage = '#secondpage';
+		$('#body').swipeUp(function(){
+			if (order == 4){
+				return;
+			}
+			if (lock == 0){
+				$(thispage).hide();
+				// $(nextpage).hide();
+				$(nextpage).fadeIn();
+				lock = 1;
+				++order;
+				page(order);
+			}
+			setTimeout(function(){lock = 0}, 1000);
+		});
+		$('#body').swipeDown(function(){
+			if (order == 1){
+				return;
+			}
+			if (lock == 0){
+				$(thispage).hide();
+				// $(nextpage).hide();
+				$(prepage).fadeIn();
+				lock = 1;
+				--order;
+				page(order);
+			}
+			setTimeout(function(){lock = 0}, 1000);
+		});
+		function nextPage(){
+			if (order == 4){
+				return;
+			}
+			$(thispage).hide();
+			$(nextpage).fadeIn();
+			++order;
+			page(order);
+		}
+		function page(pagenow){
+			switch (pagenow){
+				case 1: thispage = '#firstpage', nextpage = '#secondpage', prepage = ''; break;
+				case 2: thispage = '#secondpage', nextpage = '#thirdpage', prepage = '#firstpage'; break;
+				case 3: thispage = '#thirdpage', nextpage = '#fourthpage', prepage = '#secondpage'; break;
+				case 4: thispage = '#fourthpage', nextpage = '', prepage = '#thirdpage'; break; 
+			}
+		};
+		// $('#firstpage').swipeUp(function(){
+		// 	$('#firstpage').hide();
+		// 	$('#secondpage').hide();
+		// 	$('#secondpage').fadeIn();
+		// })
+		// $('#secondpage').swipeUp(function(){
+		// 	$('#secondpage').hide();
+		// 	$('#thirdpage').hide();
+		// 	$('#thirdpage').fadeIn();
+		// })
+		// $('#thirdpage').swipeUp(function(){
+		// 	$('#thirdpage').hide();
+		// 	$('#fourthpage').hide();
+		// 	$('#fourthpage').fadeIn();
+		// })
+		// $('#fourthpage').swipeDown(function(){
+		// 	$('#fourthpage').hide();
+		// 	$('#thirdpage').hide();
+		// 	$('#thirdpage').fadeIn();
+		// })
+		// $('#thirdpage').swipeDown(function(){
+		// 	$('#thirdpage').hide();
+		// 	$('#secondpage').hide();
+		// 	$('#secondpage').fadeIn();
+		// })
+		// $('#secondpage').swipeDown(function(){
+		// 	$('#secondpage').hide();
+		// 	$('#firstpage').hide();
+		// 	$('#firstpage').fadeIn();
+		// })
+	</script>
+</body>
+</html>

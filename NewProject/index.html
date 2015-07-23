@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body style="background: #eee; color: #707070;">
+	<div class="mainbox">
+		<form>
+			<section class="step1 in">
+				<nav>
+					<i class="nav1 yes">1</i>
+					<i class="nav2">2</i>
+				</nav>
+				<h4 class="item_des">项目描述</h4>
+				<div class="clear"></div>
+				<div class="form_item">
+					<label for="title">
+						<input name="title" id="title" class="numlimit" placeholder="标题" maxlength="30">
+					</label>
+					<p class="font_small">还可以输入<i class="num_left" id="title_left">30</i>字</p>
+				</div>
+				<div class="form_item">
+					<label for="title">
+						<textarea name="description" id="description" class="numlimit" maxlength="800" placeholder="内容：有趣的项目描述和特别的回报可以提高筹款成功率哦~"></textarea>
+					</label>
+					<p class="font_small">还可以输入<i class="num_left" id="description_left">800</i>字,至少10个字</p>
+				</div>
+				<div class="form_item">
+					<a id="upload" href="javascript:;">点击上传图片<span style="color:#999;font-size:12px;">(轻触可排序)</span></a>
+					<input type="file" style="display: none" id="file_input" />
+					<p class="font_small">上传精彩的个人或项目图片，能更加吸引大家关注哦(由于微信限制部分手机无法上传图片)</p>
+				</div>
+				<h4 class="item_des" style="margin-top:5px">选择项目类别</h4>
+				<input type="hidden" name="channel_id" value="0" id="channel_select">
+				<div class="check_box">
+					<div class="check_item" id="1">公益</div>
+					<div class="check_item" id="2">旅行</div>
+					<div class="check_item" id="3">出版</div>
+					<div class="check_item" id="4">聚会</div>
+					<div class="check_item" id="5">欢笑</div>
+					<div class="check_item" id="6">看脸</div>
+					<div class="check_item" id="7">礼物</div>
+					<div class="check_item" id="8">其他</div>
+				</div>
+				<a class="btn" href="javascript:;" id="next_page">下一步</a>
+			</section>
+			<section class="step2 out">
+				<nav>
+					<i class="nav1 yes">1</i>
+					<i class="nav2 yes">2</i>
+				</nav>
+				<h4 class="item_des">项目目标</h4>
+				<div class="clear"></div>				
+				<div class="form_item">
+					<label for="target_day" class="day_after"><input type="tel" name="target_day" id="target_day" placeholder="筹款天数(发起后不可修改)"></label>
+					<p class="font_small">筹款时间1~28天。其中，7天以内，免费；超过7天，平台将抽取筹款金额一定比例的费用作为服务佣金。8~14天，2%；15~21天，3.5%；22~28天，5%。其中1.5%为支付宝，网银等支付工具的流量费。筹款时间超过8天，可设置项目回报。<span style="color: #f76262;">有回报项目成功后分两次打款。</span></p>
+				</div>
+				<div class="form_item">
+					<label for="target_money" class="yuan_after"><input type="tel" name="target_money" id="target_money" placeholder="目标金额(发起后不可修改)"></label>
+					<p class="font_small">合适的目标金额，项目更容易成功！</p>
+				</div>
+				<div id="hasPayoff" class="hide">
+					<div class="form_item">
+						<label class="opt_item">设置对于支持者的回报<i class="option on" id="payoff_btn"></i></label>
+						<input type="hidden" name="enable_payoff" id="enable_payoff" value="0">
+						<p class="font_small">对于支持你的人，如果你能提供一些回报（比如项目的产品、某种门票或者礼物等等），可以激发更多人支持你。<span style="color:#f76262;">(有回报项目成功并通过审核后将分两次打款)</span></p>
+					</div>
+					<div class="form_item" id="payoff_wrapper">
+						<div id="payoff_box"></div>
+						<a href="javascript:;" id="new_payoff">+回报设置</a>
+					</div>
+				</div>
+				<div id="noPayoff" class="form_item">
+					<label for="min_money" class="yuan_after"><input type="tel" name="min_money" id="min_money" value="1"></label>
+					<p class="font_small">设置每位支持者最低支持你多少钱</p>
+				</div>
+				<div class="form_item">
+				<p class="font_middle">如果需要知道支持者姓名、手机、地址等可以在此设置</p>
+				<div id="opt_box">
+					<input type="hidden" name="enable_custom_label" id="enable_custom_label" value="0">
+					<label class="opt_item"><span>姓名</span><i class="option user_opt"></i></label>
+					<label class="opt_item"><span>手机</span><i class="option user_opt"></i></label>
+					<label class="opt_item"><span>地址</span><i class="option user_opt"></i></label>
+				</div>
+				<div id="label_list"></div>
+					<div id="edit_box">
+						<label class="opt_item"><input id="new_opt_input" maxlength="15" placeholder="请输入自定义内容"></label>
+						<a href="javascript:;" class="opt_btn" id="save_opt">保存</a>
+						<a href="javascript:;" class="opt_btn" id="cancel_opt">取消</a>
+					</div>
+					<label class="opt_item" id="new_opt">+自定义</label>
+				</div>
+				<a class="btn" href="javascript:;" data-type="submit">发起项目</a>
+				<a class="btn gray pageBtn" href="javascript:;" id="pre_page">返回修改</a>
+			</section>
+		</form>
+	</div>
+	<script type="text/javascript">
+		var next_page_button = document.getElementById("next_page");
+		var pre_page_button = document.getElementById("pre_page");
+		var step1 = document.querySelector(".step1");
+		var step2 = document.querySelector(".step2");
+		var check_items = document.querySelectorAll(".check_item");
+		var channel = document.getElementById("channel_select");
+		var title = document.getElementById("title");
+		var description = document.getElementById("description");
+		var title_left = document.getElementById("title_left");
+		var description_left = document.getElementById("description_left");
+		var upload_button = document.getElementById("upload");
+		var file_input = document.getElementById("file_input")
+		next_page_button.onclick = function(){
+			if (title.value.length == 0) {
+				alert("项目标题不能为空");
+				title.parentNode.style.border = "1px solid red";
+			}else if (description.value.length < 10) {
+				alert("项目描述不能为空且至少包含十个字");
+				description.parentNode.style.border = "1px solid red";
+			}else if (channel_select.value == 0){
+				alert("请选择一个所属频道");
+			}else {
+				step1.className = "step1 out";
+				step2.className = "step2 in";
+			}
+		}
+		pre_page_button.onclick = function(){
+			step1.className = "step1 in";
+			step2.className = "step2 out";
+		}
+		window.URL = window.URL || window.webkitURL;
+		var div = document.createElement("div");
+		div.className = "add_img";
+		upload_button.parentNode.appendChild(div);
+		upload_button.addEventListener('click', function(){
+			/**
+			 * 此方法出现问题，即由于浏览器安全控制而出现的fakepath问题。
+			 */
+			// file_input.click();
+			// file_input.onchange = function() {
+			// 	alert(file_input.value);
+			// 	var img = document.createElement("img");
+			// 	img.style.float = "left";
+			// 	img.src = file_input.value;
+			// 	upload_button.parentNode.appendChild(img);
+			// }
+			file_input.click();
+			file_input.onchange = function(){
+				var img_url = window.URL.createObjectURL(file_input.files[0]);
+				console.log(img_url);
+				var img = document.createElement("img");
+				img.className = "pre_img";
+				img.src = img_url;
+				div.appendChild(img);
+				// window.URL.revokeObjectURL(this.img_url);
+			}
+		}, false);   //此方法绑定onclick事件据说IE里不能用，没有尝试不清楚。。。
+
+		// for (var i = 0; i < 8; i++){
+		// 	check_items[i].onclick = function(){
+		// 		for (var j =  0; j < 8; j++) {
+		// 			check_items[j].className = "check_item";
+		// 		}
+		// 		this.className = "check_item on";
+		// 		channel.value = this.id;
+		// 	}
+		// }
+		/**
+		 * 这里是使用两种方式进行绑定，上边是普通方式通过ID对value进行改变。
+		 * 下面是通过匿名函数进行事件绑定，此处注意闭包的概念。
+		 */
+		for (var i = 0; i < 8; i++){
+			(function(n){
+				check_items[n].onclick = function(){
+					for (var j =  0; j < 8; j++) {
+						check_items[j].className = "check_item";
+					}
+					check_items[n].className = "check_item on";
+					channel.value = n+1;
+				}
+			})(i);
+		}
+		title.oninput = function() {
+			title.parentNode.style.border = "border: 1px solid #d2d2d2";
+			title_left.innerHTML = (30-title.value.length);
+		}
+		description.oninput = function() {
+			description.parentNode.style.border = "border: 1px solid #d2d2d2";
+			description_left.innerHTML = (800-description.value.length);
+		}
+	</script>
+</body>
+</html>

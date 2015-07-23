@@ -1,0 +1,90 @@
+.horizontal{
+	width: 20px;
+	height: 6px;
+	background: red;
+}
+.vetical{
+	width: 6px;
+	height: 20px;
+	background: red;
+}
+.hmethord1{
+	position: fixed;
+	margin-top: 7px;
+}
+.vmethord1{
+	margin-left: 7px;
+}
+
+.hmethord2{
+	position: absolute;
+	margin-top: 7px; 
+	z-index: 0;
+}
+.vmethord2{
+	position: absolute;
+	margin-left: 7px;
+	z-index: 1;
+}
+.hmethord3{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	margin-top: 7px;
+}
+.vmethord3{
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+}
+.hmethord4{
+	transform: translateY(100%);
+}
+.vmethord4{
+	transform: rotate(90deg);
+}
+.red-cross{
+	width: 20px;
+	height: 6px;
+	background: red;
+	position: relative;
+}
+.red-cross:before{
+	content: '';
+	height: 7px;
+	width: 6px;
+	position: absolute;
+	top: -7px;
+	left: 7px;
+	background: red;
+}
+.red-cross:after{
+	content: '';
+	height: 7px;
+	width: 6px;
+	position: absolute;
+	top: 6px;
+	left: 7px;
+	background: red;
+}
+.red-cross2{
+	width: 20px;
+	height: 6px;
+	background: red;
+	position: relative;
+}
+.red-cross2:before{
+	content: '';
+	width: 20px;
+	height: 6px;
+	background: red;
+	transform: rotate(90deg);
+	position: absolute;
+}
+
+.red-cross3{
+	width: 30px;
+	height: 30px;
+	background: red;
+	-webkit-clip-path: polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%, 40% 0%);
+}

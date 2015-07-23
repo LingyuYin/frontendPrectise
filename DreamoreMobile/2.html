@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="content-type" content="type=text/html;charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div id = "secondpage">
+		<div id="toptext">
+			<span class="bigtextstyle">快速发起筹款</span>
+			<span class="smalltextstyle" style="margin-top:0.13rem">一句话描述筹款目的，添加图片，语音描述<br/>即可快速的发起筹款，获得支持</span>
+		</div>
+		<img class="middleimage secondimage" src="images/pagetwoimage.png"> 
+		<div class="bottom">
+			<button class="download" onclick="#">iPhone版下载</button>
+			<img class="nextbutton" src="images/next.png">
+		</div>
+	</div>
+	<script type="text/javascript" src="zepto.js"></script>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript">
+		(function(){
+			var el = document.documentElement;
+			var width = document.body.clientWidth;
+			var height = window.screen.height;
+			var fontsize = width/320 * 100;
+			el.style.fontSize = fontsize + "px";
+			var page = document.getElementById("secondpage");
+			page.style.height = height + "px";
+		})();
+	</script>
+</body>
+</html>

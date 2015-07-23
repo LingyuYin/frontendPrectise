@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<style type="text/css">
+		.*{
+			padding: 0px;
+			margin: 0px;
+		}
+		@-webkit-keyframes rotate{
+			from{-webkit-transform:rotate(0deg)}
+			to{-webkit-transform:rotate(360deg)}
+		}
+		.thehead{
+			float: left;
+			height: 120px;
+			width: 300px;
+			background: #f5f5f5;
+			text-align: center;
+			line-height: 60px;
+		}
+		.first{
+			font-size: 30px;
+			vertical-align: middle;
+
+		}
+		.first:first-letter{
+			color: #afd33f;
+		}
+		.headright{
+			height: 120px;
+			line-height: 120px;
+		}
+		.topbar{
+			width: 170px;
+			font-size: 24px;
+			float: left;
+			text-align: center;
+			text-decoration: none;
+			color: black;
+		}
+		.second-line{
+			height: 300px;
+			width: 300px;
+			clear: left;
+			float: left;
+			background: url(images/bg_1.png);
+			border: 1px;
+		}
+		.play-out{
+			position: relative;
+			height: 203px;
+			width: 203px;
+			background: url(images/play_out.png);
+			z-index: 2;
+			top: 50%;
+			margin-top: -101px;
+			left: 50%;
+			margin-left: -101px;
+		}
+		.play-ok{
+			position: absolute;
+			height: 130px;
+			width: 162px;
+			background: url(images/play_ok.png);
+			z-index: 2;
+			top: 50%;
+			margin-top: -85px;
+			left: 50%;
+			margin-left: -81px;
+		}
+		.play{
+			position: absolute;
+			height: 94px;
+			width: 94px;
+			background: url(images/play.png);
+			z-index: 3;
+			top: 50%;
+			margin-left: -47px;
+			left: 50%;
+			-webkit-transform: translateY(-50%);
+		}
+		.second-2{
+			width: 300px;
+			height: 300px;
+			float: left;
+			background: #f5f5f5;
+			border: 2px solid #fff;
+		}
+		.smallblock{
+			width: 150px;
+			height: 150px;
+			background: #000000;
+			float: left;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #fff;
+		}
+		.new{
+			clear: left;
+			float: left;
+		}
+		.block{
+			float:left;
+			width: 148px;
+			height: 74px;
+			border-width: 1px 1px 75px 1px;
+			border-style: solid;
+			border-color: black;
+			border-radius: 100%;
+			position:relative;
+			-webkit-animation: 5s linear 0s normal none infinite rotate;
+		}
+		.block:before{
+			content: '';
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			top: 50%;
+			left: 0;
+			background: #fff;
+			border: 30px solid black;
+			border-radius: 100%;
+		}
+		.block:after{
+			content: '';
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			top: 50%;
+			right: 0;
+			background: #000;
+			border: 30px solid white;
+			border-radius: 100%;
+		}
+	</style>
+</head>
+<body>
+	<head>
+		<div class="thehead">
+			<p class="first">Colorfulday</p>
+		</div>
+		<div class="headright">
+			<a href="#" class="topbar">About us</a>
+			<a href="#" class="topbar">history</a>
+			<a href="#" class="topbar">AD center</a>
+			<a href="#" class="topbar">Notice</a>
+		</div>
+	</head>
+	<div class="second-line">
+		<div class="play-out">
+			<div class="play"></div>
+			<div class="play-ok"></div>
+		</div>
+	</div>
+	<div class="second-2"></div>
+	<div style="float:left">
+		<div class="smallblock"></div>
+		<div class="smallblock"></div>
+		<div class="smallblock"></div>
+		<div class="smallblock new"></div>
+		<div class="block"></div>
+	</div>
+</body>
+</html>
