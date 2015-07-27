@@ -14,7 +14,7 @@ section{
 	height: 100%;
 	left: 0;
 	top: 0;
-	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
 	padding: 16px;
 	overflow-y: auto;
 }
@@ -30,7 +30,7 @@ label{
 	display: block;
 	position: relative;
 	clear: both;
-	width: 100%;
+	/*width: 100%;*/
 	box-sizing: border-box;
 	padding: 10px 12px;
 	line-height: 22px;
@@ -216,7 +216,7 @@ a{
 	height: 28px;
 	border-radius: 14px;
 	background: #989a97;
-	transition: all .3s ease
+	-webkit-transition: all .3s ease
 }
 .option:after{
 	content: '';
@@ -228,7 +228,7 @@ a{
 	border-radius: 50%;
 	background: #fff;
 	border: 2px solid #989a97;
-	transition: all .3s ease;
+	-webkit-transition: all .3s ease;
 }
 label.opt_item{
 	margin-bottom: 12px;
@@ -259,8 +259,16 @@ label.opt_item{
 	color: #329ade;
 	text-align: center;
 }
+#edit_box{
+	overflow: auto;
+	height: 0;
+	-webkit-transition: all 0.3s ease;
+}
 .hide{
 	display: none;
+}
+#edit_box.show{
+	height: 100px;
 }
 .opt_btn {
 	float: left;
@@ -279,10 +287,118 @@ label.opt_item{
 .add_img{
 	overflow: auto;
 }
-.pre_img{
-	width: 23%;
-	height: 23%;
+.img_div{
+	float: left;
+	position: relative;
+}
+.pre_img {
+	width: 80px;
 	padding-left: 6px;
-	padding-right: 4px;
-
+	padding-right: 8px;
+	padding-top: 10px;
+}
+.small_img {
+	opacity: 0.6;
+	-webkit-transform: scale(0.8);
+}
+.big_img {
+	-webkit-transform: scale(1.1);
+}
+.delete_button{
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 15px;
+	height: 15px;
+	background: red;
+	border-radius: 100%;
+	color: white;
+	line-height: 15px;
+	text-align: center;
+}
+.delete_button.bigger{
+	width: 20px;
+	height: 20px;
+	top: 0;
+	line-height: 20px;
+}
+.next_arrow, .pre_arrow{
+	position: absolute;
+	top: 30%;
+	-webkit-transform: scale(0.4) translateY(-50%);
+	width: 60px;
+	height: 70px;
+}
+.pre_arrow{
+	left: -15px;
+	background: url(left.png);
+}
+.next_arrow{
+	right: -15px;
+	background: url(right.png);
+}
+.option.on{
+	background: #329ade;
+}
+.option.on:after{
+	left: 22px;
+	border: 2px solid #329ade;
+}
+.del_opt_btn{
+	position: absolute;
+	right: 78px;
+	color: #329ade;
+	font-size: 14px;
+}
+.gray_opacity{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: #232323;
+	opacity: 0.4;
+	z-index: 5;
+	overflow-y: hidden;
+}
+.payoff_input{
+	position: absolute;
+	width: 80%;
+	left: 5%;
+	top: 5%;
+	padding: 3% 5%;
+	background: #f6f6f6;
+	text-align: center;
+	border-radius: 10px;
+	z-index: 10;
+	overflow-y: hidden;
+	-webkit-transform: translateY(-150%);
+	-webkit-transition: all 0.3s ease;
+}
+.payoff_input.show{
+	-webkit-transform: translateY(0);
+}
+.inside{
+	text-align: left;
+	padding-left: 5px;
+}
+#support_monry{
+	width: 90%;
+}
+.payoff_item:{
+	overflow: auto;
+}
+.payoff_item p{
+	clear: both;
+}
+.ls{
+	float: left;
+}
+.blue{
+	color: #008ccb;
+}
+.del{
+	float: right;
 }

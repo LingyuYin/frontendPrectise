@@ -8,6 +8,33 @@
 </head>
 <body style="background: #eee; color: #707070;">
 	<div class="mainbox">
+	<!--遮罩-->
+		<div class="gray_opacity hide"></div>
+		<div class="payoff_input">
+			<div class="delete_button bigger">X</div>
+			<h3>添加回报</h3>
+			<div class="form_item">
+				<p class="inside">设置支持金额</p>
+				<label class="title">
+					<input type="tel" id="suport_money" name="s_money" placeholder="支持金额">
+				</label>
+			</div>
+			<div class="form_item">
+				<p class="inside">设置回报内容</p>
+				<label class="title">
+					<textarea id="re_des" name="re_des" class="numlimit" maxlength="40" placeholder="吸引人的回报可以获得更多支持"></textarea>
+				</label>
+				<p class="font_small inside">还可以输入<i class="num_left" id="re_des_left">40</i>字</p>
+			</div>
+			<div class="form_item">
+				<p class="inside">限制份数</p>
+				<label class="title">
+					<input type="tel" id="limit_num" name="limit_num" placeholder="不填写为不限制">
+				</label>
+				<p class="font_small inside">限制最多份数，达到后停止该回报</p>
+			</div>
+			<a href="javascript:;" class="btn" data-type="save" id="save_re">保存回报</a>
+		</div>
 		<form>
 			<section class="step1 in">
 				<nav>
@@ -45,7 +72,7 @@
 					<div class="check_item" id="7">礼物</div>
 					<div class="check_item" id="8">其他</div>
 				</div>
-				<a class="btn" href="javascript:;" id="next_page">下一步</a>
+				<a class="btn" href="javascript:" id="next_page">下一步</a>
 			</section>
 			<section class="step2 out">
 				<nav>
@@ -53,13 +80,17 @@
 					<i class="nav2 yes">2</i>
 				</nav>
 				<h4 class="item_des">项目目标</h4>
-				<div class="clear"></div>				
+				<div class="clear"></div>
 				<div class="form_item">
-					<label for="target_day" class="day_after"><input type="tel" name="target_day" id="target_day" placeholder="筹款天数(发起后不可修改)"></label>
+					<label for="target_day" class="day_after">
+						<input type="tel" name="target_day" id="target_day" placeholder="筹款天数(发起后不可修改)">
+					</label>
 					<p class="font_small">筹款时间1~28天。其中，7天以内，免费；超过7天，平台将抽取筹款金额一定比例的费用作为服务佣金。8~14天，2%；15~21天，3.5%；22~28天，5%。其中1.5%为支付宝，网银等支付工具的流量费。筹款时间超过8天，可设置项目回报。<span style="color: #f76262;">有回报项目成功后分两次打款。</span></p>
 				</div>
 				<div class="form_item">
-					<label for="target_money" class="yuan_after"><input type="tel" name="target_money" id="target_money" placeholder="目标金额(发起后不可修改)"></label>
+					<label for="target_money" class="yuan_after">
+						<input type="tel" name="target_money" id="target_money" placeholder="目标金额(发起后不可修改)">
+					</label>
 					<p class="font_small">合适的目标金额，项目更容易成功！</p>
 				</div>
 				<div id="hasPayoff" class="hide">
@@ -73,8 +104,10 @@
 						<a href="javascript:;" id="new_payoff">+回报设置</a>
 					</div>
 				</div>
-				<div id="noPayoff" class="form_item">
-					<label for="min_money" class="yuan_after"><input type="tel" name="min_money" id="min_money" value="1"></label>
+				<div id="no_payoff" class="form_item">
+					<label for="min_money" class="yuan_after">
+						<input type="tel" name="min_money" id="min_money" value="1">
+					</label>
 					<p class="font_small">设置每位支持者最低支持你多少钱</p>
 				</div>
 				<div class="form_item">
@@ -93,12 +126,17 @@
 					</div>
 					<label class="opt_item" id="new_opt">+自定义</label>
 				</div>
-				<a class="btn" href="javascript:;" data-type="submit">发起项目</a>
-				<a class="btn gray pageBtn" href="javascript:;" id="pre_page">返回修改</a>
+				<a class="btn" href="javascript:;" data-type="submit" id="submit">发起项目</a>
+				<a class="btn gray pageBtn" href="javascript:" id="pre_page">返回修改</a>
 			</section>
 		</form>
 	</div>
 	<script type="text/javascript">
+		/**
+		 * [firstpage description]
+		 * 
+		 */
+		location.hash = "#1";
 		var next_page_button = document.getElementById("next_page");
 		var pre_page_button = document.getElementById("pre_page");
 		var step1 = document.querySelector(".step1");
@@ -123,17 +161,30 @@
 			}else {
 				step1.className = "step1 out";
 				step2.className = "step2 in";
+				location.hash = "#2";
 			}
 		}
 		pre_page_button.onclick = function(){
 			step1.className = "step1 in";
 			step2.className = "step2 out";
+			location.hash = "#1";
 		}
 		window.URL = window.URL || window.webkitURL;
 		var div = document.createElement("div");
 		div.className = "add_img";
 		upload_button.parentNode.appendChild(div);
-		upload_button.addEventListener('click', function(){
+		upload_button.addEventListener('click', function(e){
+			// event
+			/**
+			 * event用法
+			 * 
+			 */
+			// var dom = e.target; 取出绑定块中的元素
+			// dom.className, tagName.toLowerCase() == 'a' {   做判断，确定某一元素，绑定函数
+			// 	fn()
+			// }
+			// 
+			// e.currentTarget;
 			/**
 			 * 此方法出现问题，即由于浏览器安全控制而出现的fakepath问题。
 			 */
@@ -147,16 +198,91 @@
 			// }
 			file_input.click();
 			file_input.onchange = function(){
+				upload_button.parentNode.appendChild(div);
 				var img_url = window.URL.createObjectURL(file_input.files[0]);
-				console.log(img_url);
-				var img = document.createElement("img");
-				img.className = "pre_img";
-				img.src = img_url;
-				div.appendChild(img);
+				// console.log(img_url);
+				if (img_url != null) {
+					var img_div = document.createElement("div");
+					img_div.className = "img_div";
+					var img = document.createElement("img");
+					img.className = "pre_img";
+					var delete_button = document.createElement("div")
+					delete_button.className = "delete_button";
+					delete_button.innerHTML = "X";
+					img.src = img_url;
+					img_div.appendChild(img);
+					img_div.appendChild(delete_button);
+					div.appendChild(img_div);
+					delete_button.onclick = function(){
+						delete_button.parentNode.remove();
+					}
+				}
 				// window.URL.revokeObjectURL(this.img_url);
 			}
 		}, false);   //此方法绑定onclick事件据说IE里不能用，没有尝试不清楚。。。
-
+		var pre_arrow = document.createElement("div");
+		var next_arrow = document.createElement("div");
+		pre_arrow.className = "pre_arrow";
+		next_arrow.className = "next_arrow";
+		div.onmouseover = function(){
+			var imgs = document.querySelectorAll(".pre_img");
+			for (var i = imgs.length - 1; i >= 0; i--) {
+				console.log(i);
+				(function(n){
+					imgs[n].onclick = function(){
+						var t = 0;   //做个标志位
+						if (imgs[n].parentNode.className == "img_div big_img"){
+							t = 1;
+						}
+						for (var j = imgs.length - 1; j >= 0; j--) {
+							if (t == 1) {
+								imgs[j].parentNode.className = "img_div";
+								if(pre = document.querySelector(".pre_arrow")){
+									pre.remove();
+								}
+								if(next = document.querySelector(".next_arrow")){
+									next.remove();
+								}
+							}else {
+								if (j != n) {
+									imgs[j].parentNode.className = "img_div small_img";
+								} else {
+									imgs[n].parentNode.className = "img_div big_img";
+									imgs[n].parentNode.appendChild(pre_arrow);
+									imgs[n].parentNode.appendChild(next_arrow);
+								}
+							}
+						}
+					}
+				})(i)
+			}
+		}
+		pre_arrow.onclick = function(){
+			var img_divs = document.querySelectorAll(".img_div");
+			var m = 0;
+			for (var i = 0; i < img_divs.length; i++) {
+				if (img_divs[i].className == "img_div big_img") {
+					m = i;
+					break;
+				}
+			};
+			if (m!= 0) {
+				div.insertBefore(img_divs[m], div.childNodes[m-1]);
+			}
+		}
+		next_arrow.onclick = function(){
+			var img_divs = document.querySelectorAll(".img_div");
+			var m = 0;
+			for (var i = 0; i < img_divs.length; i++) {
+				if (img_divs[i].className == "img_div big_img") {
+					m = i;
+					break;
+				}
+			};
+			if (m!= img_divs.length-1) {
+				div.insertBefore(img_divs[m+1], div.childNodes[m]);
+			}
+		}
 		// for (var i = 0; i < 8; i++){
 		// 	check_items[i].onclick = function(){
 		// 		for (var j =  0; j < 8; j++) {
@@ -182,12 +308,264 @@
 			})(i);
 		}
 		title.oninput = function() {
-			title.parentNode.style.border = "border: 1px solid #d2d2d2";
+			title.parentNode.style.border = "1px solid #d2d2d2";
 			title_left.innerHTML = (30-title.value.length);
 		}
 		description.oninput = function() {
-			description.parentNode.style.border = "border: 1px solid #d2d2d2";
+			description.parentNode.style.border = "1px solid #d2d2d2";
 			description_left.innerHTML = (800-description.value.length);
+		}
+		/**
+		 * [secondpage description]
+		 * 
+		 */
+		var day_input = document.getElementById("target_day");
+		var money_input = document.getElementById("target_money");
+		var payoff = document.getElementById("hasPayoff");
+		var payoff_btn = document.getElementById("payoff_btn");
+		var no_payoff = document.getElementById("no_payoff");
+		var payoff_wrapper = document.getElementById("payoff_wrapper");
+		var opt_box_members = document.querySelectorAll(".option.user_opt");
+		var opt_box = document.getElementById("opt_box");
+		var edit_box = document.getElementById("edit_box");
+		var new_opt_bnt = document.getElementById("new_opt");
+		var save_opt = document.getElementById("save_opt");
+		var cancel_opt = document.getElementById("cancel_opt");
+		var new_opt_input = document.getElementById("new_opt_input");
+		var new_payoff_bnt = document.getElementById("new_payoff");
+		var gray_opacity = document.querySelector(".gray_opacity");
+		var payoff_input = document.querySelector(".payoff_input");
+		var payoff_box = document.getElementById("payoff_box");
+		// var re_des = document.getElementById("re_des");
+		// var re_des_left = document.getElementById("re_des_left");
+		var delete_button_bigger = document.querySelector(".delete_button.bigger");
+		// var suport_money = document.getElementById("suport_money");
+		// var limit_num = document.getElementById("limit_num");
+		for (var i in opt_box_members){
+			(function(n){
+				opt_box_members[n].onclick = function(){
+					if (opt_box_members[n].className == "option user_opt"){
+						opt_box_members[n].className = "option user_opt on";
+					} else {
+						opt_box_members[n].className = "option user_opt";
+					}
+				}
+			})(i)
+		}
+		day_input.oninput = function(){
+			if (day_input.value.length != 0 && money_input.value.length != 0){
+				payoff.style.display = "block";
+				no_payoff.style.display = "none";
+				var opt_box_on = document.querySelectorAll(".option.user_opt.on");
+				for (var i in opt_box_on) {
+					opt_box_on[i].className = "option user_opt on";
+				}
+			} if (!(/^\d+$/.test(day_input.value)) && day_input.value != "") {
+				day_input.parentNode.style.border = "1px solid red";
+			} else {
+				day_input.parentNode.style.border = "1px solid #d2d2d2";
+			}
+		}
+		money_input.oninput = function(){
+			if (day_input.value.length != 0 && this.value.length != 0){
+				payoff.style.display = "block";
+				no_payoff.style.display = "none";
+				var opt_box_off = document.querySelectorAll(".option.user_opt");
+				for (var i in opt_box_off) {
+					opt_box_off[i].className = "option user_opt on";
+				}
+			}
+			if (!(/^\d+$/.test(this.value)) && this.value != "") {
+				this.parentNode.style.border = "1px solid red";
+			} else {
+				this.parentNode.style.border = "1px solid #d2d2d2";
+			}
+		}
+		payoff_btn.onclick = function(){
+			if (payoff_btn.className == "option on") {
+				payoff_btn.className = "option";
+				payoff_wrapper.style.display = "none";
+				no_payoff.style.display = "block";
+				var opt_box_on = document.querySelectorAll(".option.user_opt.on");
+				for (var i in opt_box_on) {
+					opt_box_on[i].className = "option user_opt";
+				}
+				document.getElementById("enable_custom_label").value = "0";
+			} else {
+				payoff_btn.className = "option on";
+				payoff_wrapper.style.display = "block";
+				no_payoff.style.display = "none";
+				var opt_box_off = document.querySelectorAll(".option.user_opt");
+				for (var i in opt_box_off) {
+					opt_box_off[i].className = "option user_opt on";
+				}
+				document.getElementById("enable_custom_label").value = "1";
+			}
+		}
+		new_opt_bnt.onclick = function() {
+			if (edit_box.className == "") {
+				edit_box.className = "show";
+			} else {
+				edit_box.className = "";
+			}
+		}
+		cancel_opt.onclick = function(){
+			edit_box.className = "";
+			new_opt_input.value = "";
+		}
+		save_opt.onclick = function(){
+			if (new_opt_input.value.length == 0) {
+				alert("自定义内容不能为空");
+				new_opt_input.parentNode.style.border = "1px solid red";
+			} else {
+				var new_opt = document.createElement("label");
+				new_opt.className = "opt_item";
+				var span = document.createElement("span");
+				span.innerHTML = new_opt_input.value;
+				var on_off_button = document.createElement("i");
+				on_off_button.className = "option user_opt on";
+				var del_opt_btn = document.createElement("i");
+				del_opt_btn.className = "del_opt_btn";
+				del_opt_btn.innerHTML = "删除";
+				new_opt.appendChild(span);
+				new_opt.appendChild(del_opt_btn);
+				new_opt.appendChild(on_off_button);
+				opt_box.appendChild(new_opt);
+				edit_box.className = "";
+				new_opt_input.value = "";
+				on_off_button.onclick = function(){
+					if (this.className == "option user_opt"){
+						this.className = "option user_opt on";
+					} else {
+						this.className = "option user_opt";
+					}
+				}
+				del_opt_btn.onclick = function(){
+					this.parentNode.remove();
+				}
+			}
+		}
+		new_opt_input.oninput = function() {
+			new_opt_input.parentNode.style.border = "1px solid #d2d2d2";
+		}
+		new_payoff_bnt.onclick = function() {
+			gray_opacity.className = "gray_opacity";
+			payoff_input.className = "payoff_input show";
+		}
+		/*
+		re_des.oninput = function() {
+			this.parentNode.style.border = "1px solid #d2d2d2";
+			re_des_left.innerHTML = (40-this.value.length);
+		}
+		suport_money.oninput = function() {
+			if (!(/^\d+$/.test(this.value)) && this.value != "") {
+				this.parentNode.style.border = "1px solid red";
+			} else {
+				this.parentNode.style.border = "1px solid #d2d2d2";
+			}
+		}
+		limit_num.oninput = function() {
+			if (!(/^\d+$/.test(this.value)) && this.value != "") {
+				this.parentNode.style.border = "1px solid red";
+			} else {
+				this.parentNode.style.border = "1px solid #d2d2d2";
+			}
+		}
+		*/
+		payoff_input.addEventListener('input', function(){
+			var dom = event.target;
+			if (dom.id == "limit_num" || dom.id == "suport_money"){
+				if (!(/^\d+$/.test(dom.value)) && dom.value != "") {
+					dom.parentNode.style.border = "1px solid red";
+				} else {
+					dom.parentNode.style.border = "1px solid #d2d2d2";
+				}
+			} else if (dom.id == "re_des") {
+				dom.parentNode.style.border = "1px solid #d2d2d2";
+				document.getElementById("re_des_left").innerHTML = (40-dom.value.length);
+			}
+		}, false);
+		payoff_input.addEventListener('click', function(){
+			var dom = event.target;
+			if (dom.className == "delete_button bigger"){
+				payoff_input.className = "payoff_input";
+				gray_opacity.className = "gray_opacity hide";
+			} else if (dom.id == "save_re"){
+				var l = document.getElementById("limit_num");
+				var r = document.getElementById("re_des");
+				var s = document.getElementById("suport_money");
+				if (l.value == "" || s.value == "" || r.value == "") {
+					alert("请输入完整信息");
+				}
+				else{
+					if (l.parentNode.style.borderColor == "red" || s.parentNode.style.borderColor == "red"){
+						alert("请输入正确数字");
+					} else {
+						var re_des = document.getElementById("re_des");
+						var suport_money = document.getElementById("suport_money");
+						var limit_num = document.getElementById("limit_num");
+						payoff_input.className = "payoff_input";
+						gray_opacity.className = "gray_opacity hide";
+						var payoff_item = document.createElement("div");
+						payoff_item.className = "payoff_item";
+						var ls = document.createElement("div");
+						ls.className = "ls";
+						ls.innerHTML = "支持<i class='blue'>"+suport_money.value+"</i>元，剩余<i class='blue'>"+limit_num.value+"</i>份";
+						var del = document.createElement("div");
+						del.className = "del blue";
+						del.innerHTML = "删除";
+						del.onclick = function(){
+							del.parentNode.remove();
+						}
+						var p = document.createElement("p");
+						p.innerHTML = "回报内容：" + re_des.value;
+						input_money = document.createElement("input");
+						input_money.name = "s_money[]";
+						input_money.value = suport_money.value;
+						input_money.type = "hidden";
+						input_des = document.createElement("input");
+						input_des.name = "re_des[]";
+						input_des.value = re_des.value;
+						input_des.type = "hidden";
+						input_num = document.createElement("input");
+						input_num.name = "limit_num[]";
+						input_num.value = limit_num.value;
+						input_num.type = "hidden";
+						payoff_box.appendChild(payoff_item);
+						payoff_item.appendChild(ls);
+						payoff_item.appendChild(del);
+						payoff_item.appendChild(p);
+						payoff_item.appendChild(input_money);
+						payoff_item.appendChild(input_num);
+						payoff_item.appendChild(input_des);
+						re_des.value = "";
+						suport_money.value = "";
+						limit_num.value = "";
+					}
+				}
+			}
+		}, false);
+		document.getElementById("submit").onclick = function() {
+			var input = document.getElementsByTagName("input");
+			for (var i = 0; i < input.length; i++) {
+				if (input[i].name != "") {
+					console.log(input[i].name + ":" + input[i].value);
+				}
+			}
+			var textarea = document.getElementsByTagName("textarea");
+			for (var i = textarea.length - 1; i >= 0; i--) {
+				console.log(textarea[i].name + ":" + textarea[i].value);
+			};
+		}
+		onhashchange = function(){
+			if (location.hash == "#1") {
+				step1.className = "step1 in";
+				step2.className = "step2 out";
+			}
+			if (location.hash == "#2") {
+				step1.className = "step1 out";
+				step2.className = "step2 in";
+			}
 		}
 	</script>
 </body>
