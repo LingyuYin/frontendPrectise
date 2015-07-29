@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div class="background"></div>
+	<div class="green_circle" id="clock">
+		<div class="green_circle_inner"></div>
+		<div class="green_blocks"></div>
+		<div class="green_blocks left"></div>
+		<div class="green_blocks right"></div>
+		<!-- <div id="half_day"></div> -->
+		<div id="hourhand"></div>
+		<div id="minutehand"></div>
+		<div id="secondhand"></div>
+		<div class="line"></div>
+	</div>
+	<div class="digital_clock"></div>
+	<input type="file" id="get_background" style="display:none" accept="image/*">
+	<i class="choose_background" onclick="change_background()">背景</i>
+	<div class="background_window">
+		<i class="tile chosen">平铺</i>
+		<i class="draw">拉伸</i>
+		<i class="center">居中</i>
+		<div class="hide_background_window">X</div>
+	</div>
+	<div class="sector">
+		<div class="sector_uper"></div>
+		<div class="half_blue_left"></div>
+		<div class="half_white_left"></div>
+		<div class="half_blue_right"></div>
+		<div class="half_white_right"></div>
+	</div>
+	<!-- <div class="sector second">
+		<div class="sector_uper"></div>
+	</div> -->
+	<div class=""></div>
+</body>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		var half_white_left = document.querySelector(".half_white_left");
+		var half_white_right = document.querySelector(".half_white_right");
+		var n = 0.4;
+		var sector = document.querySelector(".sector");
+		(function(k){
+			if (k < 0.5) {
+				half_white_right.style.transition = "all "+k+"s "+"linear";
+			}
+			if (k > 0.5) {
+				if (k>1) {k=1;}
+				half_white_right.style.transition = "all 0.5s linear";
+				half_white_left.style.transition = "all "+(k-0.5)+"s "+"linear";
+			}
+		})(n);
+		(function(k){
+			if (k < 0.5) {
+				half_white_right.style.transform = "rotate("+(360*k)+"deg)";
+			}
+			if (k > 0.5) {
+				if (k>1) {k=1;}
+				half_white_right.style.transform = "rotate(180deg)";
+				setTimeout(function(){
+					half_white_right.style.display = "none";
+					half_white_left.style.transform = "rotate("+(360*(k-0.5))+"deg)";
+				}, 500);
+			}
+		})(n);
+
+		/**
+		 * 有问题
+		 */
+		// var sector_second = document.querySelector(".sector.second");
+		// var pi = Math.PI;
+		// // (function(){
+		// // 	if (n <= 0.25) {
+		// // 		sector_second.style.WebkitClipPath="polygon(50% 50%, 0 0, 0 0, 0 0, 0 0,"+100*(0.5-0.5*Math.tan(pi/4 - n*pi*2))+"% 0, 50% 50%)";
+		// // 	}
+		// // 	if (n > 0.25 && n <= 0.5) {
+		// // 		sector_second.style.WebkitClipPath="polygon(50% 50%, 0 0, 50% 0, 70% 0, 100% 0,100% "+100*(0.5-0.5*Math.tan(pi/4 - (n-0.25)*pi*2))+"%, 50% 50%)";
+		// // 	}
+		// // 	if (n > 0.5 && n <= 0.75) {
+		// // 		sector_second.style.WebkitClipPath="polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%,"+100*(0.5-0.5*Math.tan(pi/4 - (n-0.5)*pi*2))+"% 100%, 50% 50%)";
+		// // 	}
+		// // 	if (n > 0.75 && n < 1) {
+		// // 		sector_second.style.WebkitClipPath="polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%,0 "+100*(0.5-0.5*Math.tan(pi/4 - (n-0.75)*pi*2))+"%, 50% 50%)";
+		// // 	}
+		// // 	if (n >= 1) {
+		// // 		sector_second.style.WebkitClipPath="polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 50%)";
+		// // 	}
+		// // })();
+		// 
+		var sector_uper = document.querySelector(".sector_uper");
+		sector.onclick = function(){
+			sector_uper.style.visibility = "hidden";
+			sector_uper.style.opacity = "0";
+		}
+	</script>
+</html>
